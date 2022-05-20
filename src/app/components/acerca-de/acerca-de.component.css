@@ -1,9 +1,13 @@
+.div {
+    text-align: center;
+}
+
 .row {
     padding: 15px;
 }
 
-.div {
-    text-align: center;
+#nombre {
+    margin-top: 15px;
 }
 
 img {

@@ -1,0 +1,23 @@
+.card-title {
+    padding: 5px 5px 5px 5px;
+    margin-left: 20px
+}
+
+.titulo {
+    background-color: rgb(42, 42, 102);
+    color: white;
+}
+
+.card-text {
+    margin-left: 20px
+}
+
+img {
+    align-items: auto;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.card {
+    height: 50%;
+}

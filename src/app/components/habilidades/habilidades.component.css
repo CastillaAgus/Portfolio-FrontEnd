@@ -1,0 +1,14 @@
+#titulo {
+    margin-left: 0px;
+    background-color: rgb(24, 24, 102);
+    color: white;
+    padding: 10px;
+    font-size: 55%;
+}
+
+div {
+    align-items: center;
+    padding: 5px 10px 10px;
+    color: black;
+    margin-left: -7px;
+}

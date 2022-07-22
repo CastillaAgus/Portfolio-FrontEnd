@@ -1,11 +1,12 @@
 .tituloEdu {
-    padding: 5px 5px 5px 5px;
-    margin-left: 20px
+    padding: 10px 5px 5px 5px;
+    margin-left: 0;
 }
 
 .titulo {
     background-color: rgb(42, 42, 102);
     color: white;
+    align-content: center;
 }
 
 .card-text {
@@ -13,7 +14,7 @@
 }
 
 img {
-    align-items: auto;
+    align-items: right;
     max-width: 250px;
     max-height: 250px;
 }

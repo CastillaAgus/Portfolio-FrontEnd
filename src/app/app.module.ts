@@ -14,7 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 
 
@@ -37,6 +37,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
     HttpClientModule,
+    FormsModule , 
+    ReactiveFormsModule
     
   ],
   providers: [],

@@ -6,7 +6,6 @@ import { Educacion } from 'src/app/model/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
 
 
-    // TEndria que haber llamado al componente Educacion // 
 @Component({
   selector: 'app-formacion',
   templateUrl: './formacion.component.html',
@@ -17,8 +16,9 @@ export class FormacionComponent implements OnInit {
   public educaciones:Educacion []=[];
   public editEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
-
-  constructor(private educacionService:EducacionService) { }
+ public addEducacion:Educacion | undefined;
+ 
+ constructor(private educacionService:EducacionService) { }
 
   ngOnInit(): void {
     this.getEducacion();
@@ -26,8 +26,8 @@ export class FormacionComponent implements OnInit {
  
 public getEducacion():void {
   this.educacionService.getEducacion().subscribe({
-    next:(Response:Educacion[]) =>{
-       this.educaciones=Response;   
+    next:(response:Educacion[]) =>{
+       this.educaciones=response;   
     },
     error:(error:HttpErrorResponse)=>{
       alert(error.message);
@@ -40,7 +40,7 @@ public getEducacion():void {
    button.style.display='none';
    button.setAttribute('data-toggle','modal');
    if(mode==='add') {
-     button.setAttribute('data-target','#addEducacionMOdal');
+     button.setAttribute('data-target','#addEducacionModal');
    } else if (mode==='delete'){
      this.deleteEducacion=educacion;
      button.setAttribute('data-target','#deleteEducacionModal');
@@ -53,7 +53,7 @@ public getEducacion():void {
 }
  public onAddEducacion(addForm: NgForm){
    document.getElementById('add-education-form')?.click();
-   this.educacionService.addEducacion(addForm.value).subscribe ({
+   this.educacionService.addEducacion(addForm.value).subscribe({
      next: (response:Educacion)=>{
        console.log(response);
        this.getEducacion();
@@ -68,7 +68,7 @@ public getEducacion():void {
  public onUpdateEducacion(educacion: Educacion){
    this.editEducacion=educacion;
    document.getElementById('add-education-form')?.click();
-   this.educacionService.updateEducacion(educacion).subscribe ({
+   this.educacionService.updateEducacion(educacion).subscribe({
      next: (response:Educacion)=>{
        console.log(response);
        this.getEducacion();
@@ -78,9 +78,9 @@ public getEducacion():void {
        }
    })
  } 
- public onDeleteEducacion(idEdu: number):void{
+ public onDeleteEducacion(idEdu:number):void{
  
-    this.educacionService.deleteEducacion(idEdu).subscribe ({
+    this.educacionService.deleteEducacion(idEdu).subscribe({
     next: (response:void)=>{
       console.log(response);
       this.getEducacion();

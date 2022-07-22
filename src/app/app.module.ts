@@ -15,6 +15,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import {HttpClientModule} from '@angular/common/http';
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,23 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { persona } from '../model/persona.model';
+
+import { environment } from 'src/environments/environment';
+import { Persona } from '../model/persona.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
  
-// deespues tengo que poner la url del servidor // 
+
 export class PersonaService {
-  URL = 'hhtp://localhost:8080/personas/'
+  private apiServerUrl=environment.apiBaseUrl;
 
   constructor (private http: HttpClient) { }
   
-
-   public getPersona(): Observable<persona> {
-     return this.http.get<persona>(this.URL + 'traer/perfil');
-     
-   }
-
-
+ public getPersona():Observable<Persona> {
+   return this.http.get<Persona>(`${this.apiServerUrl}/persona/id/1`);
+ }
+   
+ public updatePersona( persona: Persona):Observable<Persona>{
+   return this.http.put<Persona>(`${this.apiServerUrl}/persona/editar`, persona);
+ }
+ public addPersona(persona:Persona):Observable<Persona>{
+  return this.http.post<Persona>(`${this.apiServerUrl}/persona/agregar`,persona);
+}
+public deletePersona(personaId:number):Observable<void>{
+  return this.http.delete<void>(`${this.apiServerUrl}/persona/borrar/${personaId}`);
+}
 }

@@ -1,4 +1,4 @@
-.card-title {
+.tituloEdu {
     padding: 5px 5px 5px 5px;
     margin-left: 20px
 }
@@ -18,6 +18,6 @@ img {
     max-height: 250px;
 }
 
-.card {
+.row {
     height: 50%;
 }

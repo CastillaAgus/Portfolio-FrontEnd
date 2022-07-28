@@ -1,18 +1,18 @@
-.card-title {
-    box-shadow: 0 1px 0 rgba (255, 255, 255, );
-    padding: 5px 5px 5px 5px;
-}
-
-.titulo {
+#titulo {
     background-color: rgb(42, 42, 102);
     color: white;
+    align-self: center;
+    text-align: center;
 }
 
 .cargo h4 h5 {
     margin-left: 20px;
 }
 
-.card-text {
-    text-align: left;
-    margin-top: 20px;
+.tituloExp {
+    margin-left: 20px;
+}
+
+#carta {
+    padding: 10px;
 }

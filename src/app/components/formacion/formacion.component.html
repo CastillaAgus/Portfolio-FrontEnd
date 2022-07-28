@@ -1,7 +1,7 @@
 <div class="row" id="formacion">
-    <div class=" titulo">
+    <div class="titulo">
         <h2 class="col-12">Formación</h2>
-        <div class="text-center">
+        <div class="text-right" *ngIf="isLogged">
             <button type="button" class="btn btn-primary" (click)="onOpenModal('add')">
         <a class="nav-link" style="color: aliceblue">
           Añadir Educación <span class="sr-only">(current)</span>
@@ -10,24 +10,21 @@
         </div>
     </div>
     <div id="main-container" *ngFor="let educacion of educaciones">
-        <div class="col-12">
+        <div class="col-12" id="carta">
             <h5 class="tituloEdu">{{ educacion.tituloEdu }}</h5>
         </div>
+        <div class="row">
+            <div class="block col-6">
+                <h6>{{ educacion.tipoEdu }} - {{ educacion.fechaEdu }}</h6>
+                <div> {{ educacion.descEdu }}</div>
+            </div>
 
-        <div class="block col-6">
-            {{ educacion.tipoEdu }}
-        </div>
-        <div class=" block col-6">
-            {{ educacion.fechaEdu }}
-        </div>
 
-        <div class="col-9" id="descripcionEdu">
-            {{ educacion.descEdu }}
+            <div class="col-6">
+                <img id="fotoEdu" class="align-rigth col-2" src="{{ educacion.imgEdu }}" alt="" />
+            </div>
         </div>
-        <div class="col-6">
-            <img id="fotoEdu" class="align-rigth sm2 col-2" src="{{ educacion.imgEdu }}" alt="" />
-        </div>
-        <div class="col text-center">
+        <div class="col text-right" *ngIf="isLogged">
             <a (click)="onOpenModal('edit', educacion)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
                 <i class="fa fa-pencil"> </i>
             </a>

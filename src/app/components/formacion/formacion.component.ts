@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { main } from '@popperjs/core';
 import { Educacion } from 'src/app/model/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import { TokenService } from 'src/app/service/token.service';
 
 
 @Component({
@@ -18,10 +19,16 @@ export class FormacionComponent implements OnInit {
   public deleteEducacion:Educacion | undefined;
  public addEducacion:Educacion | undefined;
  
- constructor(private educacionService:EducacionService) { }
+ constructor(private educacionService:EducacionService, private tokenService: TokenService) { }
+ isLogged = false;
 
   ngOnInit(): void {
     this.getEducacion();
+    if( this.tokenService.getToken()){
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
  
 public getEducacion():void {

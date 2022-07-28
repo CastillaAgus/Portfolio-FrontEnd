@@ -1,9 +1,15 @@
 #titulo {
-    margin-left: 0px;
-    background-color: rgb(24, 24, 102);
+    background-color: rgb(42, 42, 102);
     color: white;
-    padding: 10px;
-    font-size: 55%;
+    align-content: center;
+    text-align: center;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 33%;
+    flex-wrap: wrap;
 }
 
 div {
@@ -11,4 +17,10 @@ div {
     padding: 5px 10px 10px;
     color: black;
     margin-left: -7px;
+}
+
+.circulos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: 15;
 }

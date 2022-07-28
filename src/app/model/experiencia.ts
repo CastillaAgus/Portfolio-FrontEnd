@@ -1,8 +1,8 @@
 export interface Experiencia {
     idExp:number;
     tituloExp:string;
-    fechaIniExp:string;
-    fechaFinExp:string;
+    fechaIniExp:number;
+    fechaFinExp:number;
     descExp:string;
     tipoExp:string;
 }

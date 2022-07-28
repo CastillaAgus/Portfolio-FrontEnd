@@ -1,37 +1,141 @@
 <div class="row" id="Skills">
     <div id="titulo">
-        <h2>Habilidades técnicas y comunicativas</h2>
+        <h2 class="col-12">Habilidades</h2>
+        <div class="text-right" *ngIf="isLogged">
+            <button type="button" class="btn btn-primary" (click)="onOpenModal('add')">
+        <a class="nav-link" style="color: aliceblue">
+          Añadir Habilidad <span class="sr-only">(current)</span>
+        </a>
+      </button>
+        </div>
     </div>
-    <!-- ----------------------PORCENTAJE DE HTML ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="90" [radius]="100" [title]="'HTML'" [showTitle]="true" [imageHeight]="65" [imageWidth]="65" [imageSrc]="'../../../assets/html.png'" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'"
-            [innerStrokeColor]="'#0066FF'" [animation]="true" [animationDuration]="300"></circle-progress>
+    <div class="row" id="main-container" *ngFor="let skills of skillss">
+        <div id="circulos" class="col-sm-4 col-md-4 col-lg-4">
+            <h5>{{skills.nombreSkills}}</h5>
+            <circle-progress [percent]="skills.porcentajeSkills" [radius]="100" [title]="skills.nombreSkills" [showTitle]="true" [imageHeight]="65" [imageWidth]="65" [imageSrc]="skills.imgSkills" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'"
+                [innerStrokeColor]="'#0066FF'" [animation]="true" [animationDuration]="300"></circle-progress>
+
+            <div class="col text-right" *ngIf="isLogged">
+                <a (click)="onOpenModal('edit', skills)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                    <i class="fa fa-pencil"> </i>
+                </a>
+                <a (click)="onOpenModal('delete', skills)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
     </div>
-    <!-- ----------------------PORCENTAJE DE CSS ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="85" [showUnits]="true" [title]="'Css'" [imageHeight]="65" [imageWidth]="65" [imageSrc]="'../../../assets/css3.png '" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'" [innerStrokeColor]="'#0066FF'"
-            [titleColor]="'black'" [animation]="true" [animationDuration]="300">
-            <h4>HTML</h4>
-        </circle-progress>
+</div>
+<!-- Anadir Skills Modal-->
+<div class="modal fade" id="addSkillsModal" tabindex="-1" role="dialog" aria-labelledby="addSkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSkillsModalLabel">Añadir Habilidad</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddSkills(addForm)">
+                    <div class="form-group">
+                        <label for="nombreSkills">Titulo</label>
+                        <input type="text" ngModel name="nombreSkills" class="form-control" id="nombreSkills" place-holder="Título" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="imgSkills">Imagen</label>
+                        <input type="text" ngModel name="imgSkills" class="form-control" id="imgSkills" place-holder="Imagen" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="porcentajeSkills">Porcentaje</label>
+                        <input type="number" ngModel name="porcentajeSkills" class="form-control" id="porcentajeSkills" place-holder="Porcentaje" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-skills-form" class="btn btn-secondary" data-dismiss="modal">
+              Cerrar
+            </button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">
+              Añadir cambios
+            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <!-- ----------------------PORCENTAJE DE JAVA ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="65" [radius]="100" [title]="'Java'" [imageHeight]="65" [imageWidth]="65" [imageSrc]="'../../../assets/java.png'" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'" [innerStrokeColor]="'#0066FF'"
-            [animation]="true" [animationDuration]="300"></circle-progress>
+</div>
+<!------------------------- Edit Modal------------------------->
+<div class="modal fade" id="editSkillsModal" tabindex="-1" role="dialog" aria-labelledby="editSkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSkillssModalLabel">
+                    Editar Habilidad {{ editSkills?.nombreSkills }}
+                </h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="nombreSkills">Titulo</label>
+                        <input type="text" ngModel=" {{ editSkills?.nombreSkills }}" name="nombreSkills" class="form-control" id="nombreSkills" place-holder="Título" required />
+                    </div>
+                    <input type="hidden" ngModel=" {{ editSkills?.idSkills }}" name="idSkills" class="form-control" id="idSkills" place-holder="" required />
+                    <div class="form-group">
+                        <label for="imgSkills">Imagen</label>
+                        <input type="text" ngModel="{{ editSkills?.imgSkills }}" name="imgSkills" class="form-control" id="imgSkills" place-holder="Imagen" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="porcentajeSkills">Porcentaje</label>
+                        <input type="text" ngModel="{{ editSkills?.porcentajeSkills }}" name="porcentajeSkills" class="form-control" id="porcentajeSkills" place-holder="Porcentaje" required />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="" class="btn btn-secondary" data-dismiss="modal">
+              Cerrar
+            </button>
+                        <button (click)="onUpdateSkills(editForm.value)" data-dismiss="modal" class="btn btn-primary">
+              Añadir cambios
+            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <!-- ----------------------PORCENTAJE DE javascript ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="60" [radius]="100" [title]="'Js'" [imageHeight]="65" [imageWidth]="85" [imageSrc]="'../../../assets/js.png'" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'" [innerStrokeColor]="'#0066FF'"
-            [animation]="true" [animationDuration]="300"></circle-progress>
+</div>
+<!------------------------- Delete Modal------------------------->
+<div data-bs-toggle="modal" data-bs-target="#deleteSkillsModalLabel" class="modal fade" id="deleteSkillsModal" tabindex="-1" role="dialog" aria-labelledby="deleteSkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletSkillsModalLabel">
+                    Eliminar Habilidad {{ editSkills?.nombreSkills }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    ¿Estas seguro que queres eliminar {{ deleteSkills?.nombreSkills }}
+                </p>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+                    <button (click)="onDeleteSkills(deleteSkills!.idSkills)" data-dismiss="modal" class="btn btn-danger">
+            Eliminar
+          </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- ----------------------PORCENTAJE DE Comunicación ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="90" [radius]="100" [title]="'comunicacion'" [imageHeight]="65" [imageWidth]="65" [imageSrc]="'../../../assets/comunicacion2.png'" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'"
-            [innerStrokeColor]="'#0066FF'" [animation]="true" [animationDuration]="300"></circle-progress>
-    </div>
-    <!-- ----------------------PORCENTAJE DE Trabajo en Equipo ------------------------------------------>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="85" [radius]="100" [title]="'trabajoEnEquipo'" [imageHeight]="65" [imageWidth]="85" [imageSrc]="'../../../assets/comunicacion.png'" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'"
-            [innerStrokeColor]="'#0066FF'" [animation]="true" [animationDuration]="300"></circle-progress>
+</div>
+<!-- Alerta de que esta vacio-->
+<div *ngIf="skillss?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No se han encontrado habilidades</h4>
     </div>
 </div>

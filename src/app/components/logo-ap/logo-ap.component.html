@@ -1,16 +1,25 @@
 <div class="row">
     <div class="container">
-        <div class="logo">
-            <img src="../../../assets/APLogo.png" id="logoap" alt="Logo Argentina Programa">
+        <div id="logo">
+            <img src="../../../assets/APLogo.png" id="logoap" alt="Logo Argentina Programa" />
         </div>
-        <div class="social">
-            <a href="https://www.instagram.com/agus.loop/" target="_blank"> <img src="../../../assets/instagram.png" alt="Logo instagram" id="instagram"></a>
-            <a href="https://www.linkedin.com/in/agustincastilla/" target="_blank"> <img src="../../../assets/linkedin.png" alt="logo linkedin" id="linkedin"></a>
-            <a href="https://github.com/CastillaAgus" target="_blank"> <img src="../../../assets/github.png" alt="logo github" id="github"></a>
-            <a href="https://www.facebook.com/agustin.castilla.1/" target="_blank"> <img src="../../../assets/facebook.png" alt="logo facebook" id="facebook"></a>
-            <div><button class="btn btn-primary" id="login" type="submit">Iniciar Sesión</button>
+        <div id="social">
+            <a href="https://www.instagram.com/agus.loop/" target="_blank">
+                <img src="../../../assets/instagram.png" alt="Logo instagram" id="instagram" /></a>
+            <a href="https://www.linkedin.com/in/agustincastilla/" target="_blank">
+                <img src="../../../assets/linkedin.png" alt="logo linkedin" id="linkedin" /></a>
+            <a href="https://github.com/CastillaAgus" target="_blank">
+                <img src="../../../assets/github.png" alt="logo github" id="github" /></a>
+            <a href="https://www.facebook.com/agustin.castilla.1/" target="_blank">
+                <img src="../../../assets/facebook.png" alt="logo facebook" id="facebook" /></a>
+            <div>
+                <button class="btn btn-primary" type="button" (click)="login()" *ngIf="!isLogged">
+          Iniciar Sesión
+        </button>
+                <button class="btn btn-primary" type="button" (click)="onLogOut()" *ngIf="isLogged">
+          Cerrar Sesión
+        </button>
             </div>
         </div>
-
     </div>
 </div>

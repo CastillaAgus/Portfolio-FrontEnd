@@ -1,4 +1,9 @@
 .titulo {
     background-color: rgb(24, 24, 102);
     color: white;
+    text-align: center;
+}
+
+#main-container {
+    padding: 10px;
 }

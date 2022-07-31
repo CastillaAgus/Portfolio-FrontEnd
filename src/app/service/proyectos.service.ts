@@ -9,7 +9,7 @@ import { Proyectos } from '../model/proyectos';
 })
 export class ProyectosService {
 
-  URL = 'https://portfolioagustincastilla.herokuapp.com'
+  URL = 'https://portfolioagustincastilla.herokuapp.com';
 
 
   constructor(private http:HttpClient) { }

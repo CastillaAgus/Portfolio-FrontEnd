@@ -9,7 +9,7 @@ import { Experiencia } from '../model/experiencia';
 })
 export class ExperienciaService {
   
-  URL = 'https://portfolioagustincastilla.herokuapp.com'
+  URL = 'https://portfolioagustincastilla.herokuapp.com';
 
   constructor(private http:HttpClient) {}
     public getExperiencia(): Observable<Experiencia[]>{

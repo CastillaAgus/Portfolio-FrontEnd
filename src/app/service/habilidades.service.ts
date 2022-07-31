@@ -9,7 +9,7 @@ import { Skills } from '../model/habilidades';
 })
 export class HabilidadesService {
 
-  URL = 'https://portfolioagustincastilla.herokuapp.com'
+  URL = 'https://portfolioagustincastilla.herokuapp.com';
 
 
   constructor(private http:HttpClient) { }

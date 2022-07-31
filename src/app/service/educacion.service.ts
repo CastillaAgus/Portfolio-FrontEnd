@@ -8,21 +8,21 @@ import { Educacion } from '../model/educacion';
   providedIn: 'root'
 })
 export class EducacionService {
-  private apiServerUrl=environment.apiBaseUrl;
+  URL = 'https://portfolioagustincastilla.herokuapp.com'
 
 
   constructor(private http:HttpClient) { }
     
   public getEducacion(): Observable<Educacion[]>{
-    return this.http.get<Educacion[]>(`${this.apiServerUrl}/educacion/lista`);
+    return this.http.get<Educacion[]>(`${this. URL}/educacion/lista`);
       }
   public addEducacion(educacion:Educacion):Observable<Educacion>{
-    return this.http.post<Educacion>(`${this.apiServerUrl}/educacion/agregar`,educacion);
+    return this.http.post<Educacion>(`${this. URL}/educacion/agregar`,educacion);
   }
   public updateEducacion(educacion:Educacion): Observable<Educacion>{
-    return this.http.put<Educacion>(`${this.apiServerUrl}/educacion/editar`,educacion);
+    return this.http.put<Educacion>(`${this. URL}/educacion/editar`,educacion);
   }
   public deleteEducacion(educacionId:number):Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/educacion/borrar/${educacionId}`);
+    return this.http.delete<void>(`${this. URL}/educacion/borrar/${educacionId}`);
   }
 }

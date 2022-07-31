@@ -8,20 +8,21 @@ import { Experiencia } from '../model/experiencia';
   providedIn: 'root'
 })
 export class ExperienciaService {
-  private apiServerUrl=environment.apiBaseUrl;
+  
+  URL = 'https://portfolioagustincastilla.herokuapp.com'
 
   constructor(private http:HttpClient) {}
     public getExperiencia(): Observable<Experiencia[]>{
-      return this.http.get<Experiencia[]>(`${this.apiServerUrl}/experiencia/lista`);
+      return this.http.get<Experiencia[]>(`${this.URL}/experiencia/lista`);
         }
     public addExperiencia(experiencia:Experiencia):Observable<Experiencia>{
-      return this.http.post<Experiencia>(`${this.apiServerUrl}/experiencia/agregar`,experiencia);
+      return this.http.post<Experiencia>(`${this.URL}/experiencia/agregar`,experiencia);
     }
     public updateExperiencia(experiencia:Experiencia): Observable<Experiencia>{
-      return this.http.put<Experiencia>(`${this.apiServerUrl}/experiencia/editar`,experiencia);
+      return this.http.put<Experiencia>(`${this.URL}/experiencia/editar`,experiencia);
     }
     public deleteExperiencia(experienciaId:number):Observable<void>{
-      return this.http.delete<void>(`${this.apiServerUrl}/experiencia/borrar/${experienciaId}`);
+      return this.http.delete<void>(`${this.URL}/experiencia/borrar/${experienciaId}`);
     }
    }
 

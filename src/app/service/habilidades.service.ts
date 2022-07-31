@@ -9,21 +9,21 @@ import { Skills } from '../model/habilidades';
 })
 export class HabilidadesService {
 
-   private apiServerUrl=environment.apiBaseUrl;
+  URL = 'https://portfolioagustincastilla.herokuapp.com'
 
 
   constructor(private http:HttpClient) { }
     
   public getSkills(): Observable<Skills[]>{
-    return this.http.get<Skills[]>(`${this.apiServerUrl}/skills/lista`);
+    return this.http.get<Skills[]>(`${this.URL}/skills/lista`);
       }
   public addSkills(skills:Skills):Observable<Skills>{
-    return this.http.post<Skills>(`${this.apiServerUrl}/skills/agregar`,skills);
+    return this.http.post<Skills>(`${this.URL}/skills/agregar`,skills);
   }
   public updateSkills(skills:Skills): Observable<Skills>{
-    return this.http.put<Skills>(`${this.apiServerUrl}/skills/editar`,skills);
+    return this.http.put<Skills>(`${this.URL}/skills/editar`,skills);
   }
   public deleteSkills(skillsId:number):Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/skills/borrar/${skillsId}`);
+    return this.http.delete<void>(`${this.URL}/skills/borrar/${skillsId}`);
   }
 }

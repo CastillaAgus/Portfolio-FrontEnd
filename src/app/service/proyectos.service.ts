@@ -9,21 +9,21 @@ import { Proyectos } from '../model/proyectos';
 })
 export class ProyectosService {
 
-  private apiServerUrl=environment.apiBaseUrl;
+  URL = 'https://portfolioagustincastilla.herokuapp.com'
 
 
   constructor(private http:HttpClient) { }
     
   public getProyectos(): Observable<Proyectos[]>{
-    return this.http.get<Proyectos[]>(`${this.apiServerUrl}/proyectos/lista`);
+    return this.http.get<Proyectos[]>(`${this.URL}/proyectos/lista`);
       }
   public addProyectos(proyectos:Proyectos):Observable<Proyectos>{
-    return this.http.post<Proyectos>(`${this.apiServerUrl}/proyectos/agregar`,proyectos);
+    return this.http.post<Proyectos>(`${this.URL}/proyectos/agregar`,proyectos);
   }
   public updateProyectos(proyectos:Proyectos): Observable<Proyectos>{
-    return this.http.put<Proyectos>(`${this.apiServerUrl}/proyectos/editar`,proyectos);
+    return this.http.put<Proyectos>(`${this.URL}/proyectos/editar`,proyectos);
   }
   public deleteProyectos(proyectosId:number):Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/proyectos/borrar/${proyectosId}`);
+    return this.http.delete<void>(`${this.URL}/proyectos/borrar/${proyectosId}`);
   }
 }

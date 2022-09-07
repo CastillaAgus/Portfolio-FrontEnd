@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="row" id="main-container" *ngFor="let skills of skillss">
-        <div id="circulos" class="col-sm-4 col-md-4 col-lg-4">
+        <div id="circulos" class="col-sm-12 col-md-4 col-lg-4">
             <h5>{{skills.nombreSkills}}</h5>
             <circle-progress [percent]="skills.porcentajeSkills" [radius]="100" [title]="skills.nombreSkills" [showTitle]="true" [imageHeight]="65" [imageWidth]="65" [imageSrc]="skills.imgSkills" [showImage]="true" [outerStrokeWidth]="12" [innerStrokeWidth]="8" [outerStrokeColor]="'#40CFFF'"
                 [innerStrokeColor]="'#0066FF'" [animation]="true" [animationDuration]="300"></circle-progress>

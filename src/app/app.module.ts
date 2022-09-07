@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component'
+import { Router } from '@angular/router';
 
 
 
@@ -43,7 +44,7 @@ import { HomeComponent } from './components/home/home.component'
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
-    
+    Router
     
     
   ],

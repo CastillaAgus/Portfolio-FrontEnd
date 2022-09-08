@@ -10,22 +10,11 @@
         </div>
     </div>
     <div id="main-container" *ngFor="let educacion of educaciones">
-        <div class="card ">
-            <div class="card-header ">
-                {{ educacion.tipoEdu }}
-            </div>
-            <div class="card-body row ">
-                <h5 class="card-title ">{{ educacion.tituloEdu }}</h5>
-                <p> - {{ educacion.fechaEdu }} </p>
-                <p class="card-text col-10 "> {{ educacion.descEdu }}</p>
-                <img id="fotoEdu" class="align-rigth col-2" src="{{ educacion.imgEdu }}" alt="" />
-
-            </div>
-        </div>
 
 
 
-        <!--  <div class="col-12" id="carta">
+
+        <div class="col-12" id="carta">
             <h5 class="tituloEdu">{{ educacion.tituloEdu }}</h5>
         </div>
         <div class="row">

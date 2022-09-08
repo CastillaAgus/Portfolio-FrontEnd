@@ -35,7 +35,8 @@ import { Router } from '@angular/router';
     FooterComponent,
     ProyectosComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import { Router } from '@angular/router';
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
-    Router
+   
     
     
   ],
